@@ -1,0 +1,116 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/PhamDuyLoi_Layout.cshtml";
+}
+@model IEnumerable<HangHoa>
+<div class="content_top">
+	<div class="heading">
+		<h3>Phạm Duy Lợi</h3>
+	</div>
+	<div class="see">
+		<p><a href="#">See all Products</a></p>
+	</div>
+	<div class="clear"></div>
+</div>
+<div id="content">
+	<div class="section group">
+		@foreach (var s in Model)
+		{
+			<div class="grid_1_of_4 images_1_of_4">
+				<a href="preview.html"><img src="~/images/@s.Anh" alt="" /></a>
+				<h2>@s.TenHang</h2>
+				<div class="price-details">
+					<div class="price-number">
+						<p><span class="rupees">$@s.Gia</span></p>
+					</div>
+					<div class="add-cart">
+						<h4><a href="preview.html">Add to Cart</a></h4>
+					</div>
+					<div class="clear"></div>
+				</div>
+			</div>
+		}
+	</div>
+</div>
+<!-- End New Product -->
+<!-- Begin Feature Products -->
+<div class="content_bottom">
+	<div class="heading">
+		<h3>Feature Products</h3>
+	</div>
+	<div class="see">
+		<p><a href="#">See all Products</a></p>
+	</div>
+	<div class="clear"></div>
+</div>
+<div class="section group">
+	<div class="grid_1_of_4 images_1_of_4">
+		<a href="preview.html"><img src="images/new-pic1.jpg" alt="" /></a>
+		<h2>Lorem Ipsum is simply </h2>
+		<div class="price-details">
+			<div class="price-number">
+				<p><span class="rupees">$849.99</span></p>
+			</div>
+			<div class="add-cart">
+				<h4><a href="preview.html">Add to Cart</a></h4>
+			</div>
+			<div class="clear"></div>
+		</div>
+	</div>
+	<div class="grid_1_of_4 images_1_of_4">
+		<a href="preview.html"><img src="images/new-pic2.jpg" alt="" /></a>
+		<h2>Lorem Ipsum is simply </h2>
+		<div class="price-details">
+			<div class="price-number">
+				<p><span class="rupees">$599.99</span></p>
+			</div>
+			<div class="add-cart">
+				<h4><a href="preview.html">Add to Cart</a></h4>
+			</div>
+			<div class="clear"></div>
+		</div>
+	</div>
+	<div class="grid_1_of_4 images_1_of_4">
+		<a href="preview.html"><img src="images/new-pic4.jpg" alt="" /></a>
+		<h2>Lorem Ipsum is simply </h2>
+		<div class="price-details">
+			<div class="price-number">
+				<p><span class="rupees">$799.99</span></p>
+			</div>
+			<div class="add-cart">
+				<h4><a href="preview.html">Add to Cart</a></h4>
+			</div>
+			<div class="clear"></div>
+		</div>
+	</div>
+	<div class="grid_1_of_4 images_1_of_4">
+		<a href="preview.html"><img src="images/new-pic3.jpg" alt="" /></a>
+		<h2>Lorem Ipsum is simply </h2>
+		<div class="price-details">
+			<div class="price-number">
+				<p><span class="rupees">$899.99</span></p>
+			</div>
+			<div class="add-cart">
+				<h4><a href="preview.html">Add to Cart</a></h4>
+			</div>
+			<div class="clear"></div>
+		</div>
+	</div>
+</div>
+<!-- End Feature Products -->
+@section Scripts {
+	<script>
+		$("li").click(function(e) {
+			var id = $(this).attr("id");
+			$.ajax({
+				url: "@Url.Action("Loc", "BT")",
+				data: { mid: id },
+				success: function(reponse) {
+					$("div#content").html(reponse);
+				}
+			});
+		});
+	</script>
+}
+

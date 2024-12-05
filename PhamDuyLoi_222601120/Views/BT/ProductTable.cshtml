@@ -1,0 +1,23 @@
+﻿
+@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@model IEnumerable<HangHoa>
+<div class="section group">
+	@foreach (var s in Model)
+	{
+		<div class="grid_1_of_4 images_1_of_4">
+			<a href="preview.html"><img src="~/images/@s.Anh" alt="" /></a>
+			<h2>@s.TenHang</h2>
+			<div class="price-details">
+				<div class="price-number">
+					<p><span class="rupees">$@s.Gia</span></p>
+				</div>
+				<div class="add-cart">
+					<h4><a href="preview.html">Add to Cart</a></h4>
+				</div>
+				<div class="clear"></div>
+			</div>
+		</div>
+	}
+</div>
